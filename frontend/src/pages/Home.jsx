@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { productsAPI } from '../services/api';
 
-// Main home page component that shows all products
+// Main home page component that shows all products - Updated for deployment
 const Home = ({ addToCart, showNotification }) => {
   // State variables to store data
   const [allProducts, setAllProducts] = useState([]);
