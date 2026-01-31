@@ -14,14 +14,40 @@ const RatingForm = ({ product, orderId, onSubmit }) => {
   if (submitted) {
     return (
       <div style={{ padding: '1rem', background: '#e8f5e8', borderRadius: '5px', margin: '0.5rem 0' }}>
-        <p><strong>{product.name}</strong> - Rating submitted ✓</p>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <img 
+            src={product.image || 'https://via.placeholder.com/60x60'} 
+            alt={product.name}
+            style={{
+              width: '60px',
+              height: '60px',
+              objectFit: 'contain',
+              borderRadius: '8px',
+              border: '1px solid #ddd'
+            }}
+          />
+          <p><strong>{product.name}</strong> - Rating submitted ✓</p>
+        </div>
       </div>
     );
   }
 
   return (
     <div style={{ border: '1px solid #ddd', padding: '1rem', borderRadius: '5px', margin: '0.5rem 0' }}>
-      <h4>{product.name}</h4>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+        <img 
+          src={product.image || 'https://via.placeholder.com/80x80'} 
+          alt={product.name}
+          style={{
+            width: '80px',
+            height: '80px',
+            objectFit: 'contain',
+            borderRadius: '8px',
+            border: '1px solid #ddd'
+          }}
+        />
+        <h4>{product.name}</h4>
+      </div>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Rating:</label>
