@@ -35,6 +35,17 @@ const Cart = ({ cart, setCart, showNotification }) => {
       <h2>Your Cart</h2>
       {cart.map(item => (
         <div key={item._id} className="cart-item">
+          <img 
+            src={item.image || 'https://via.placeholder.com/100x100'} 
+            alt={item.name}
+            style={{
+              width: '80px',
+              height: '80px',
+              objectFit: 'contain',
+              borderRadius: '8px',
+              border: '1px solid #ddd'
+            }}
+          />
           <div>
             <h4>{item.name}</h4>
             <p className="price">₹{item.price}</p>
