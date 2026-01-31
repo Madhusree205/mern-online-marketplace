@@ -154,10 +154,11 @@ body {
 .product-card img {
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 10px;
   margin-bottom: 1rem;
   border: 2px solid #e3f2fd;
+  background-color: #f8f9fa;
 }
 
 /* Dashboard specific product images */
