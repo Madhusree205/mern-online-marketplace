@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const RatingForm = ({ product, orderId, onSubmit }) => {
   const [rating, setRating] = useState(5);
   const [review, setReview] = useState('');
   const [submitted, setSubmitted] = useState(false);
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -78,18 +76,9 @@ const RatingForm = ({ product, orderId, onSubmit }) => {
           />
         </div>
         
-        <div style={{ display: 'flex', gap: '1rem' }}>
-          <button type="submit" className="btn btn-success">
-            Submit Rating
-          </button>
-          <button 
-            type="button" 
-            onClick={() => navigate(-1)} 
-            className="btn btn-secondary"
-          >
-            Back
-          </button>
-        </div>
+        <button type="submit" className="btn btn-success">
+          Submit Rating
+        </button>
       </form>
     </div>
   );

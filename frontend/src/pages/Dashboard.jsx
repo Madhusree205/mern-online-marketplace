@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { productsAPI, ordersAPI, ratingsAPI } from '../services/api';
 import RatingForm from '../components/RatingForm.jsx';
 
@@ -11,7 +10,6 @@ const Dashboard = ({ user, showNotification }) => {
   const [editingProduct, setEditingProduct] = useState(null);
   const [deliveredOrders, setDeliveredOrders] = useState([]);
   const [cancellingOrderId, setCancellingOrderId] = useState(null);
-  const navigate = useNavigate();
   const [newProduct, setNewProduct] = useState({
     name: '', description: '', price: '', category: '', image: '', stock: ''
   });
@@ -144,15 +142,6 @@ const Dashboard = ({ user, showNotification }) => {
 
   return (
     <div className="container">
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-        <button 
-          onClick={() => navigate(-1)} 
-          className="btn btn-secondary"
-        >
-          ← Back
-        </button>
-        <h2>Dashboard</h2>
-      </div>
       <div className="dashboard">
         <div className="sidebar">
           <h3>Dashboard</h3>

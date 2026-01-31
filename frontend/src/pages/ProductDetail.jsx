@@ -73,30 +73,11 @@ const ProductDetail = ({ addToCart, showNotification }) => {
   };
 
   if (loading) return <div className="loading">Loading product details...</div>;
-  if (!product) return (
-    <div className="container">
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-        <button 
-          onClick={() => navigate(-1)} 
-          className="btn btn-secondary"
-        >
-          ← Back
-        </button>
-        <span>Product not found</span>
-      </div>
-    </div>
-  );
+  if (!product) return <div className="container">Product not found</div>;
 
   return (
     <div className="container">
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-        <button 
-          onClick={() => navigate(-1)} 
-          className="btn btn-secondary"
-        >
-          ← Back
-        </button>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
         <div>
           <img 
             src={product.image || 'https://via.placeholder.com/400x300'} 
