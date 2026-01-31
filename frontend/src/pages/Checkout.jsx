@@ -12,6 +12,9 @@ const Checkout = ({ showNotification }) => {
     phone: '',
     quantity: 1
   });
+  
+  const [paymentMethod, setPaymentMethod] = useState('cod');
+  const [showQR, setShowQR] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -132,9 +135,69 @@ const Checkout = ({ showNotification }) => {
               </div>
             )}
             
+            <div className="form-group">
+              <label>Payment Method:</label>
+              <div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <input
+                    type="radio"
+                    value="cod"
+                    checked={paymentMethod === 'cod'}
+                    onChange={(e) => {
+                      setPaymentMethod(e.target.value);
+                      setShowQR(false);
+                    }}
+                  />
+                  Cash on Delivery
+                </label>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <input
+                    type="radio"
+                    value="gpay"
+                    checked={paymentMethod === 'gpay'}
+                    onChange={(e) => {
+                      setPaymentMethod(e.target.value);
+                      setShowQR(true);
+                    }}
+                  />
+                  GPay
+                </label>
+              </div>
+            </div>
+            
+            {showQR && (
+              <div className="form-group">
+                <label>Scan QR Code to Pay:</label>
+                <div style={{ 
+                  textAlign: 'center', 
+                  padding: '1rem', 
+                  border: '2px dashed #007bff', 
+                  borderRadius: '10px',
+                  backgroundColor: '#f8f9fa'
+                }}>
+                  <div style={{
+                    width: '200px',
+                    height: '200px',
+                    margin: '0 auto',
+                    backgroundColor: '#000',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'white',
+                    fontSize: '14px',
+                    borderRadius: '10px'
+                  }}>
+                    QR CODE<br/>DUMMY<br/>PAYMENT
+                  </div>
+                  <p style={{ marginTop: '1rem', color: '#666' }}>Amount: ₹{product ? (product.price * formData.quantity).toFixed(2) : total?.toFixed(2)}</p>
+                  <p style={{ fontSize: '12px', color: '#999' }}>This is a demo QR code</p>
+                </div>
+              </div>
+            )}
+            
             <div style={{ display: 'flex', gap: '1rem' }}>
               <button type="submit" className="btn btn-success">
-                Place Order
+                {paymentMethod === 'cod' ? 'Place Order' : 'Confirm Payment & Order'}
               </button>
               <button 
                 type="button" 
