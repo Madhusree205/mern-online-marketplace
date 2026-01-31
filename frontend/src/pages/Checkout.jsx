@@ -66,7 +66,15 @@ const Checkout = ({ showNotification }) => {
   if (!product && !cart) {
     return (
       <div className="container">
-        <h2>Invalid Checkout</h2>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+          <button 
+            onClick={() => navigate(-1)} 
+            className="btn btn-secondary"
+          >
+            ← Back
+          </button>
+          <h2>Invalid Checkout</h2>
+        </div>
         <p>No items to checkout</p>
       </div>
     );
@@ -74,7 +82,15 @@ const Checkout = ({ showNotification }) => {
 
   return (
     <div className="container">
-      <h2>Checkout</h2>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+        <button 
+          onClick={() => navigate(-1)} 
+          className="btn btn-secondary"
+        >
+          ← Back
+        </button>
+        <h2>Checkout</h2>
+      </div>
       
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
         <div>

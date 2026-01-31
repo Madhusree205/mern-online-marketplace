@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { productsAPI } from '../services/api';
 
 const Favorites = ({ addToCart, showNotification }) => {
   const [favorites, setFavorites] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchFavorites();
@@ -58,7 +59,15 @@ const Favorites = ({ addToCart, showNotification }) => {
   if (favorites.length === 0) {
     return (
       <div className="container">
-        <h2>My Favorites</h2>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+          <button 
+            onClick={() => navigate(-1)} 
+            className="btn btn-secondary"
+          >
+            ← Back
+          </button>
+          <h2>My Favorites</h2>
+        </div>
         <p>No favorite products yet. Start adding some!</p>
         <Link to="/" className="btn">Browse Products</Link>
       </div>
@@ -67,7 +76,15 @@ const Favorites = ({ addToCart, showNotification }) => {
 
   return (
     <div className="container">
-      <h2>My Favorites</h2>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+        <button 
+          onClick={() => navigate(-1)} 
+          className="btn btn-secondary"
+        >
+          ← Back
+        </button>
+        <h2>My Favorites</h2>
+      </div>
       <div className="products-grid">
         {favorites.map(product => (
           <div key={product._id} className="product-card">

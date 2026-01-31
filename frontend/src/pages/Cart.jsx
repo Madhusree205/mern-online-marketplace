@@ -24,7 +24,15 @@ const Cart = ({ cart, setCart, showNotification }) => {
   if (cart.length === 0) {
     return (
       <div className="container">
-        <h2>Your Cart</h2>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+          <button 
+            onClick={() => navigate(-1)} 
+            className="btn btn-secondary"
+          >
+            ← Back
+          </button>
+          <h2>Your Cart</h2>
+        </div>
         <p>Your cart is empty</p>
       </div>
     );
@@ -32,7 +40,15 @@ const Cart = ({ cart, setCart, showNotification }) => {
 
   return (
     <div className="container">
-      <h2>Your Cart</h2>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+        <button 
+          onClick={() => navigate(-1)} 
+          className="btn btn-secondary"
+        >
+          ← Back
+        </button>
+        <h2>Your Cart</h2>
+      </div>
       {cart.map(item => (
         <div key={item._id} className="cart-item">
           <img 
