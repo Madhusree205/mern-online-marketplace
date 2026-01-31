@@ -175,22 +175,18 @@ const Checkout = ({ showNotification }) => {
                   borderRadius: '10px',
                   backgroundColor: '#f8f9fa'
                 }}>
-                  <div style={{
-                    width: '200px',
-                    height: '200px',
-                    margin: '0 auto',
-                    backgroundColor: '#000',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white',
-                    fontSize: '14px',
-                    borderRadius: '10px'
-                  }}>
-                    QR CODE<br/>DUMMY<br/>PAYMENT
-                  </div>
+                  <img 
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Payment%20Successful" 
+                    alt="Payment QR Code"
+                    style={{
+                      width: '200px',
+                      height: '200px',
+                      border: '1px solid #ddd',
+                      borderRadius: '10px'
+                    }}
+                  />
                   <p style={{ marginTop: '1rem', color: '#666' }}>Amount: ₹{product ? (product.price * formData.quantity).toFixed(2) : total?.toFixed(2)}</p>
-                  <p style={{ fontSize: '12px', color: '#999' }}>This is a demo QR code</p>
+                  <p style={{ fontSize: '12px', color: '#999' }}>Scan with any QR scanner</p>
                 </div>
               </div>
             )}
