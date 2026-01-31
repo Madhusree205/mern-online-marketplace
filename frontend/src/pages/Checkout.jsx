@@ -19,6 +19,13 @@ const Checkout = ({ showNotification }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    // Validate phone number (Indian format: 10 digits)
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      showNotification('Please enter a valid 10-digit Indian phone number starting with 6, 7, 8, or 9', 'error');
+      return;
+    }
+    
     try {
       if (product) {
         // Buy now single product
@@ -117,8 +124,11 @@ const Checkout = ({ showNotification }) => {
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 required
-                placeholder="Enter your phone number"
+                placeholder="Enter 10-digit phone number"
+                pattern="[6-9][0-9]{9}"
+                maxLength="10"
               />
+              <small style={{ color: '#666', fontSize: '12px' }}>Enter 10-digit number starting with 6, 7, 8, or 9</small>
             </div>
             
             {product && (
